@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#somthing
+var1=0
+until [ $var1 -eq 10 ]
+do
+echo "Best School"
+((var1++))
+done
