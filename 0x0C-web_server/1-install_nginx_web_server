@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Update package lists to have the most recent information
+apt-get update -y
+
+# Install Nginx
+apt-get install nginx -y
+
+# Ensure Nginx is running
+service nginx start
+
+# Create a custom index.html file with "Hello World!"
+echo "Hello World!" > /var/www/html/index.html
+
+# Restart Nginx to apply the changes
+service nginx restart
