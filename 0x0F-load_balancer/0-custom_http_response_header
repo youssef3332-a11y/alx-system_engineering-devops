@@ -1,0 +1,21 @@
+#!/bin/env bash
+
+# Set the hostname
+hostnamectl set-hostname 529109-web-01
+
+# Update /etc/hosts (if necessary)
+echo "127.0.0.1 localhost" | sudo tee /etc/hosts
+echo "52.207.207.204 $(hostname)" | sudo tee -a /etc/hosts
+
+# Install Nginx if not installed
+sudo apt-get update
+sudo apt-get install -y nginx
+
+# Backup the original nginx.conf before making changes
+sudo cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.bak
+
+# Use sed to add the custom header to nginx.conf
+sudo sed -i '/include \/etc\/nginx\/mime.types;/a \ \ \ \ add_header X-Served-By $hostname;' /etc/nginx/nginx.conf
+
+# Reload Nginx to apply changes
+sudo systemctl reload nginx
