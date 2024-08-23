@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 
 # Set the hostname
 hostnamectl set-hostname 529109-web-01
